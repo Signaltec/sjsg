@@ -10,7 +10,7 @@
   1. [Массивы](#объекты)
   1. [Функции](#объекты)
   1. [И ещё](#объекты)
-
+  1. [Использование](#объекты)
 
 ## Принципы
 
@@ -398,7 +398,7 @@
   
     ```javascript
     // плохо
-    if (name !== '') {
+    if (name != '') {
 
     }
 
@@ -436,7 +436,10 @@
 
   - eval() — нет.
 
-  - with — нет.
+  - with() — нет.
+  
+  - Вместо delete используй this.foo = null, там где возможно. Это быстрее работает.
+
   
   - Сеттеры и геттеры — нет
 
@@ -449,6 +452,26 @@
     var name = user.name();
     user.name('Vasya');
     ```
+
+## Использование из консоли
+
+  - Скопируйте в корень проекта файлы linters/signaltech.jscs.json, linters/signaltech.jshintrc 
+  
+  - Переименуйте signaltech.jshintrc в .jshintrc
+
+  - Установите jscs и jshint
+
+  ```
+  npm install jscs -g
+  npm install jshint -g
+  ```
+
+  - Запустите проверку
+
+  ```
+    jshint /src/app.js --config
+    jscs /src/app.js --config
+  ```
 
 
 ## Copyleft 

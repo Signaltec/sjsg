@@ -1,0 +1,21 @@
+{
+  "name": "sjsg",
+  "version": "0.0.2",
+  "description": "Signaltech Javascript Style Guide",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "~3.8.6",
+    "gulp-replace": "~0.5.3",
+    "gulp-rename": "~1.2.0"
+  },
+  "scripts": {
+    "preinstall": "sudo npm i -g gulp && sudo npm link gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ildarka/sjsg.git"
+  },
+  "author": "ildarka",
+  "license": "FREE"
+}
