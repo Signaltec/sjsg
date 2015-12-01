@@ -25,7 +25,7 @@
 1. [Строки](#strings)
 1. [Массивы](#arrays)
 1. [И ещё...](#addons)
-1. [Использовние JSLint/JSHint/JSCS](#using)
+1. [Линтеры JSLint/JSHint/JSCS](#using)
   - [SublimeText](#sublimetext)
   - [PhpStorm](#phpstorm)
   - [Brackets](#brackets)
@@ -412,7 +412,7 @@ do {
 
 ### <a name="switch"></a>switch
 
-Завершайте каждый блок кроме **default** оператором *break;*, *return* или *throw*.
+Завершайте каждый блок кроме **default** оператором *break*, *return* или *throw*.
 
 ```javascript
 switch (...) {
@@ -533,7 +533,7 @@ var args = Array.prototype.slice.call(obj.keys);
 * Object.defineProperty — да.
 
 
-## <a name="using"></a>Использовние JSLint/JSHint/JSCS
+## <a name="using"></a>Линтеры JSLint/JSHint/JSCS
 
 > TODO
 
