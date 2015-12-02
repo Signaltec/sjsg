@@ -1,0 +1,271 @@
+{
+  // Requires that a function expression be anonymous
+  "requireAnonymousFunctions": {
+    "allExcept": ["declarations"]
+  },
+
+  // Disallows arrow functions
+  "disallowArrowFunctions": true,
+
+  // Requires the first alphabetical character of a comment to be uppercase,
+  // unless it is part of a multi-line textblock or pragma-comment
+  "requireCapitalizedComments": {
+    "allExcept": ["pragma"]
+  },
+
+  // Requires commas as last token on a line in lists
+  "requireCommaBeforeLineBreak": true,
+
+  // Requires curly braces after statements
+  "requireCurlyBraces": [
+    "if", "else", "for", "while", "do", "try", "catch"
+  ],
+//  "requireCurlyBraces": {
+//    "allExcept": ["case", "default", "return", "continue", "break"]
+//  },
+
+  // disallowDanglingUnderscores
+
+  // Disallows empty blocks (except for catch blocks)
+  "disallowEmptyBlocks": {
+    "allExcept": ["comments"]
+  },
+
+  // Disallows identical destructuring names for the key
+  // and value in favor of using shorthand destructuring
+  "disallowIdenticalDestructuringNames": false,
+
+  // Disallows implicit type conversion
+  "disallowImplicitTypeConversion": ["boolean"],
+
+  // Disallows placing keywords on a new line
+  "disallowKeywordsOnNewLine": ["else", "catch"],
+
+  // Disallows usage of specified keywords
+  "disallowKeywords": ["with"],
+
+  // Requires lines to not contain both spaces and tabs consecutively
+  "disallowMixedSpacesAndTabs": true,
+
+  // Disallows strings that span multiple lines without using concatenation
+  "disallowMultipleLineStrings": true,
+
+  // Disallows multiple indentation characters (tabs or spaces)
+  // between identifiers, keywords, and any other token
+  "disallowMultipleSpaces": {
+    "allowEOLComments": true
+  },
+
+  // Disallows multiple var declaration (except for-loop)
+  "disallowMultipleVarDecl":  true,
+
+  // Disallows unassigned functions to be named inline
+  "disallowNamedUnassignedFunctions": true,
+
+  // Disallows nested ternaries
+  "disallowNestedTernaries": {
+    "maxLevel": 1
+  },
+
+  // Disallows newline before opening curly brace of all block statements
+  "disallowNewlineBeforeBlockStatements": true,
+
+  // Allows the not, not equals, and strict not equals operators in conditionals
+  "disallowNotOperatorsInConditionals": false,
+
+  // Requires placing object keys on new line
+  "requireObjectKeysOnNewLine": {
+    "allExcept": ["sameLine"]
+  },
+
+  // disallowOperatorBeforeLineBreak
+  // requireOperatorBeforeLineBreak
+
+  // Requires a blank line after 'use strict'; statements
+  "requirePaddingNewLinesAfterUseStrict": true,
+
+  // Requires newline before module.exports
+  "requirePaddingNewLinesBeforeExport": true,
+
+  // Requires newline before line comments
+  "requirePaddingNewLinesBeforeLineComments": {
+    "allExcept": "firstAfterCurly"
+    },
+
+  // Requires semicolon after:
+  // var declaration, expression statement,
+  // return, throw, break, continue, do-while
+  "requireSemicolons": true,
+
+  // Disallows sticking binary operators to the right
+  "requireSpaceAfterBinaryOperators": true,
+
+  // Requires space after comma
+  "requireSpaceAfterComma": {
+    "allExcept": ["trailing"]
+  },
+
+  // Disallows space after keyword
+  "disallowSpaceAfterKeywords": ["default"],
+
+  // Requires space after keywords
+  "requireSpaceAfterKeywords": [
+    "do", "for", "if", "else", "switch", "case", "try",
+    "catch", "void", "while", "with", "return", "typeof"
+  ],
+
+  // Requires that a line comment (//) be followed by a space
+  "requireSpaceAfterLineComment": true,
+
+  // Disallows space after object keys
+  "disallowSpaceAfterObjectKeys": true,
+
+  // Requires sticking unary operators to the right
+  "disallowSpaceAfterPrefixUnaryOperators": true,
+
+  // Disallows sticking binary operators to the left
+  "requireSpaceBeforeBinaryOperators": true,
+
+  // Requires space(s) before block statements (for loops, control structures)
+  "requireSpaceBeforeBlockStatements": 1,
+
+  // Disallows spaces before commas
+  "disallowSpaceBeforeComma": true,
+
+  // Requires space before keyword
+  "requireSpaceBeforeKeywords": [
+    "else", "catch", "while"
+  ],
+
+  // Requires space after object keys
+  "requireSpaceBeforeObjectValues": true,
+
+  // Requires sticking unary operators to the left
+  "disallowSpaceBeforePostfixUnaryOperators": true,
+
+  // Disallows spaces before semicolons
+  "disallowSpaceBeforeSemicolon": {
+    "allExcept": [ "(" ]
+  },
+
+  // Ensure there are spaces after argument separators in call expressions
+  "requireSpaceBetweenArguments": true,
+
+  // Disallows space before () in call expressions
+  "disallowSpacesInCallExpression": true,
+
+  // Requires space before and/or after ? or : in conditional expressions
+  "requireSpacesInConditionalExpression": true,
+
+  // Requires spaces inbetween for statement
+  "requireSpacesInForStatement": true,
+
+  // Disallows space before () or {} in function expressions (both named and anonymous)
+  // and function declarations
+  "disallowSpacesInFunction": {
+    "beforeOpeningRoundBrace": true
+  },
+
+  // Requires space before () or {} in function expressions (both named and anonymous)
+  // and function declarations
+  "requireSpacesInFunction": {
+    "beforeOpeningCurlyBrace": true
+  },
+
+//  // Disallows space after opening array square bracket and before closing. Reports only on arrays,
+//  // not on property accessors. Use disallowSpacesInsideBrackets to report on all brackets
+//  "disallowSpacesInsideArrayBrackets": "nested",
+
+  // Disallows space after opening square bracket and before closing. Reports on all brackets,
+  // even on property accessors. Use disallowSpacesInsideArrayBrackets to exclude property accessors
+  "disallowSpacesInsideBrackets": true,
+
+  // Disallows space after opening object curly brace and before closing
+  "disallowSpacesInsideObjectBrackets": true,
+
+  // Disallows space after opening round bracket and before closing
+  "disallowSpacesInsideParentheses": true,
+
+  // Disallows space after opening and before closing grouping parentheses
+  "disallowSpacesInsideParenthesizedExpression": true,
+
+  // Disallows tabs everywhere
+  "disallowTabs": true,
+
+  // Requires all lines to end on a non-whitespace character
+  "disallowTrailingWhitespace": true,
+
+  // Disallows unused params in function expression and function declaration
+  "disallowUnusedParams": true,
+
+  // Requires all lines to be at most the number of characters specified
+  "maximumLineLength": {
+    "value": 100,
+    "allExcept": ["regex"]
+  },
+
+//  // Enforces indentation of parameters in multiline functions
+//  "requireAlignedMultilineParams": false
+
+  // Requires blocks to begin and end with a newline
+  "requireBlocksOnNewline": 1,
+
+  // Requires identifiers to be camelCased or UPPERCASE_WITH_UNDERSCORES
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+
+  // Requires constructors to be capitalized (except for this)
+  "requireCapitalizedConstructors": {
+    "allExcept": ["somethingNative"]
+  },
+
+  //Requires commas as last token on a line in lists.
+  "requireCommaBeforeLineBreak": true,
+
+  // Requires member expressions to use dot notation when possible
+  "requireDotNotation": true,
+
+  // Requires placing line feed after assigning a variable
+  "requireLineBreakAfterVariableAssignment": true,
+
+  // Requires placing line feed at file end
+  "requireLineFeedAtFileEnd": true,
+
+  // Requires newline after blocks
+  "requirePaddingNewLinesAfterBlocks": {
+    "allExcept": ["inCallExpressions", "inNewExpressions", "inArrayExpressions", "inProperties"]
+  },
+
+  // Requires parentheses around immediately invoked function expressions
+  "requireParenthesesAroundIIFE": true,
+
+  // Requires var declaration to be on the top of an enclosing scope
+  "requireVarDeclFirst": true,
+
+  // Option to check var that = this expressions
+  "safeContextKeyword": ["self"],
+
+  // Validates proper alignment of function parameters
+  "validateAlignedFunctionParameters": {
+    "lineBreakAfterOpeningBrace": true,
+    "lineBreakBeforeClosingBrace": true
+  },
+
+  // This rule is for validating the positioning of line comments. Block comments are ignored
+  // Ignoring: eslint, jshint, jslint, istanbul, global, exported, jscs
+  "validateCommentPosition": {
+    "position": "above"
+  },
+
+  // Validates indentation for switch statements and block statements
+  "validateIndentation": 2,
+
+  // Option to check line break characters
+  "validateLineBreaks": "LF",
+
+  // Requires each element in array on a single line when array length is
+  // more than passed maximum number or array fills more than one line
+  "validateNewlineAfterArrayElements": true
+
+//  // Validates the order in object keys
+//  "validateOrderInObjectKeys": "asc"
+}
