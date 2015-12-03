@@ -25,7 +25,7 @@
 1. [Строки](#strings)
 1. [Массивы](#arrays)
 1. [И ещё...](#addons)
-1. [Линтеры JSLint/JSHint/JSCS](#using)
+1. [Линтеры JSHint/JSCS](#using)
   - [SublimeText](#sublimetext)
   - [PhpStorm](#phpstorm)
   - [Brackets](#brackets)
@@ -158,10 +158,10 @@ var iAm = {
 * **PascalCase** — для классов и имен конструкторов.
 
 В именах переменных и функций нельзя использовать зарезервированные слова:
-*var*, *array*, *object*, *null*, *arguments*, *call*, *apply*, *case*, *default*, ...
+`var`, `array`, `object`, `null`, `arguments`, `call`, `apply`, `case`, `default`, ...
 
 Имя переменной или функции должно отражать ее смысл.
-Если после недолгого размышления вы решили назвать переменную *chkbks* — подумайте еще.
+Если после недолгого размышления вы решили назвать переменную *r_chkbx* — подумайте еще.
 
 
 ## <a name="variables"></a>Объявление переменных
@@ -207,7 +207,7 @@ function square(arg) {
 ## <a name="functions"></a>Объявление функций
 
 * Объявляйте функции до первого использования, в начале блока, но после объявления переменных;
-* Не декларируйте функции внутри блоков if, for и т. д.;
+* Не декларируйте функции внутри блоков `if`, `for` и т. д.;
 * Между именем функции и открывающей скобкой не должно быть пробела;
 * Между закрывающей скобкой и открывающей фигурной скобкой должен быть пробел;
 * Блок тела функции должен открываться на одной строке с именем функции;
@@ -243,7 +243,7 @@ function doSomethingUseful() {
 
 ### <a name="simple"></a>Простые
 
-Размещайте каждую инструкцию на новой строке, завершая ее символом `;` (кроме объявления функций и блочных элементов (if, while, ...).
+Размещайте каждую инструкцию на новой строке, завершая ее символом `;` (кроме объявления функций и блочных элементов (`if`, `while`, ...).
 
 > Ребята, давайте жить дружно и не забывать ставить точку с запятой!
 
@@ -264,7 +264,7 @@ return i;
 
 ### <a name="compound"></a>Блочные
 
-* Боки инструкций заключаются в фигурные скобки `{` и `}`;
+* Блоки инструкций заключаются в фигурные скобки `{` и `}`;
 * Открывающая скобка завершает строку и не переносится на новую;
 * Закрывающая скобка, напротив, переносится на следующую строку, кроме случаев с однострочными блоками;
 * Используйте блок даже для одиночного выражения;
@@ -296,7 +296,9 @@ if (true) { return false; }
 
 ### <a name="return"></a>return
 
-Не заключайте в скобки возвращаемый объект и не переносите его на новую строку. TODO: EXAMPLE
+Не заключайте в скобки возвращаемый объект и не переносите его на новую строку.
+
+> TODO: Добавить пример кода
 
 
 ### <a name="if"></a>if
@@ -348,7 +350,7 @@ try {
 
 * Не объявляйте статические переменные в теле цикла;
 * Не объявляйте функции в теле цикла.
-* При переборе объектов в конструкции **for...in** используйте обертку **hasOwnProperty** для исключения из перечисления свойств, добавленных в прототип;
+* При переборе объектов в конструкции `for...in` используйте обертку `hasOwnProperty` для исключения из перечисления свойств, добавленных в прототип;
 
 ##### Плохо
 
@@ -412,7 +414,7 @@ do {
 
 ### <a name="switch"></a>switch
 
-Завершайте каждый блок кроме **default** оператором *break*, *return* или *throw*.
+Завершайте каждый блок кроме `default` оператором `break`, `return` или `throw`.
 
 ```javascript
 switch (...) {
@@ -430,13 +432,15 @@ switch (...) {
 
 ### <a name="with"></a>with
 
-Никогда не используйте with.
+Никогда не используйте `with`.
+
 [with Statement Considered Harmful](http://yuiblog.com/blog/2006/04/11/with-statement-considered-harmful/)
 
 
 ### <a name="eval"></a>eval
 
-Никогда не используйте eval.
+Никогда не используйте `eval`.
+
 > eval is Evil
 
 
@@ -469,7 +473,7 @@ var longStr = 'Note that in the 3d example, \'3d\' had to be quoted.' +
 
 ## <a name="arrays"></a>Массивы
 
-Используйте методы: *push*, *map*, *forEach*, *filter*, *some*, *every*, *slice*.
+Используйте методы: `push`, `map`, `forEach`, `filter`, `some`, `every`, `slice`.
 
 ##### Плохо
 
@@ -509,8 +513,9 @@ var aCopy = a.slice();
 var b = a.filter(function(i) { return i>0; });
 
 // чтобы получить массив свойств
-var obj = {a: 1, b: 2};
-var args = Array.prototype.slice.call(obj.keys);
+var myObj = {a: 1, b: 2, c: 3, d: 'bubble-gum', e: 5};
+myObj.length = Object.keys(myObj);
+var myArr = Array.prototype.slice.call(myObj);
 ```
 
 
@@ -533,30 +538,57 @@ var args = Array.prototype.slice.call(obj.keys);
 * Object.defineProperty — да.
 
 
-## <a name="using"></a>Линтеры JSLint/JSHint/JSCS
+## <a name="using"></a>Линтеры JSHint/JSCS
 
-> TODO
-
-* Скопируйте в корень проекта файлы linters/signaltech.jscs.json, linters/signaltech.jshintrc 
-* Переименуйте signaltech.jshintrc в .jshintrc
-* Установите jscs и jshint
-
+* Скопируйте в корень проекта конфигурационные файлы:
+  + `linters/signaltech.jshintrc`,
+  + `linters/signaltech.jscsrc`;
+* Переименуйте:
+  + `signaltech.jshintrc` => `.jshintrc`,
+  + `signaltech.jscsrc`   => `.jscsrc`;
+* Установите `jshint` и `jscs`:
+```bash
+npm install -g jshint
+npm install -g jscs
 ```
-npm install jscs -g
-npm install jshint -g
-```
+* Запустите проверку:
+```bash
+# из каталога с конфигурационными файлами
+jshint src/app.js
+jscs src/app.js
 
-* Запустите проверку
+# из другого каталога
+jshint /path/to/file.js --config /path/to/jshint.config
+jscs /path/to/file.js --config /path/to/jscs.config
 
-```
-jshint /src/app.js --config
-jscs /src/app.js --config
+# автоматическое исправление ошибок
+jscs /path/to/file.js --config /path/to/jscs.config --fix
 ```
 
 
 ### <a name="sublimetext"></a>SublimeText
+
+В данной инструкции мы подразумеваем, что модуль `Package Control` уже установлен, если нет - следуйте указаниям в документации: [Package Control Installation](https://packagecontrol.io/installation)
+
+Для подключения линтеров в SublimeText необходимо установить фреймворк `SublimeLinter`. 
+* Нажимаем `Ctrl + Shift + P`, для вызова командной консоли;
+* Запрашиваем список пакетов, набрав `install package` (пункт `Package Control: Install Package`);
+* Устанавливаем пакет с именем `SublimeLinter`, выбрав его в списке.
+
+Сам по себе фреймворк не содержит линтеров, они находятся в отдельных модулях. Устанавливаем пакеты `SublimeLinter-jshint` и `SublimeLinter-jscs` указанным выше методом.
+
+Все должно заработать.
+Если ошибки не начали подсвечиваться, попробуйте запустить проверку стандартным сочетанием `Ctrl + k, l`.
+
+
 ### <a name="phpstorm"></a>PhpStorm
+
+> TODO: Добавить инструкцию
+
+
 ### <a name="brackets"></a>Brackets
+
+> TODO: Добавить инструкцию
 
 
 ---
