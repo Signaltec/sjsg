@@ -1,5 +1,6 @@
 # sjsg / Signaltech Javascript Style Guide
 
+[![Code Climate](https://codeclimate.com/github/sorx00/sjsg/badges/gpa.svg)](https://codeclimate.com/github/sorx00/sjsg)
 
 ## Содержание
 
