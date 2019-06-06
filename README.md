@@ -25,6 +25,7 @@
   - [eval](#eval)
 1. [Строки](#strings)
 1. [Массивы](#arrays)
+1. [Объекты](#objects)
 1. [И ещё...](#addons)
 1. [Линтеры JSHint/JSCS](#using)
   - [SublimeText](#sublimetext)
@@ -39,6 +40,7 @@
 * [] — вместо new Array();
 * Используйте инкремент `i++` и декремент `i--`;
 * Используйте точное сравнение без приведения типов: `a === b` и `a !== b`;
+* Допускается приведение типа при проверке на `undefined`, `null` или пустую строку`''` через `!varName`;
 * Для приведения к булевому типу используйте `b = Boolean(a)` вместо двойного отрицания `b = !!a`;
 * Для приведения к числу используйте краткую запись `b = +a`,
   также можно использовать `b = parseInt(a, 10)`, но не забываете о радиксе: `parseInt(arg, radix)`.
@@ -59,6 +61,8 @@ s = '' + i + b;
 
 // тернарный оператор
 result = (expression) ? operand1 : operand2;
+или
+result = expression ? operand1 : operand2;
 ```
 
 * Используйте запятые после, а не перед декларацией:
@@ -107,6 +111,13 @@ var iAm = {
 ## <a name="comments"></a>Комментарии
 
 - Используйте  `/* ... */` для многострочных и `// ...` для однострочных комментариев;
+- Для описания методов и свойств/переменных используется формат jsDoc:
+```javascript
+/**
+ * Описание метода/переменной/свойства
+ * @param {type} propName описание аргумента
+ */
+```
 - Не пишите инлайновые комментарии;
 - Отбивайте комментарии пустой строкой сверху.
   
@@ -135,7 +146,11 @@ var iAm = {
 
   // умный комментарий
   var a = 1;
-
+  
+  /**
+   * @param {string|undefined} what Строка, которая ест коров
+   * @return {string}
+   */
   function do(what) {
     /*
       blah-blah
@@ -156,12 +171,12 @@ var iAm = {
 * **camelCase** — для имен переменных, публичных методов и свойств;
 * **_privateVar** (с ведущим подчеркиванием `_`) — для приватных свойств;
 * **UPPER_CASE** — для констант;
-* **PascalCase** — для классов и имен конструкторов.
+* **PascalCase** — для классов, имен конструкторов, namespace'ов;
 
 В именах переменных и функций нельзя использовать зарезервированные слова:
 `var`, `array`, `object`, `null`, `arguments`, `call`, `apply`, `case`, `default`, ...
 
-Имя переменной или функции должно отражать ее смысл.
+Имя переменных и функций должно отражать их смысл. Имя функция должно выражать действие. 
 Если после недолгого размышления вы решили назвать переменную *r_chkbx* — подумайте еще.
 
 
@@ -229,6 +244,17 @@ function anotherFunc()
 if (true) {
   function good() { ... }
 }
+
+/**
+ * Comment
+ */
+
+function a() {
+  
+}
+function b() {
+  
+}
 ```
 
 #####  Хорошо
@@ -237,6 +263,17 @@ if (true) {
 function doSomethingUseful() {
   // here is no nothing useful in real
 }
+
+function a() {
+  
+}
+
+/**
+ * Comment 
+ */
+function b() {
+  
+}
 ```
 
 
@@ -244,7 +281,8 @@ function doSomethingUseful() {
 
 ### <a name="simple"></a>Простые
 
-Размещайте каждую инструкцию на новой строке, завершая ее символом `;` (кроме объявления функций и блочных элементов (`if`, `while`, ...).
+Размещайте каждую инструкцию на новой строке. Все инструкции кроме блочных
+завершаются символом `;`.
 
 > Ребята, давайте жить дружно и не забывать ставить точку с запятой!
 
@@ -252,6 +290,10 @@ function doSomethingUseful() {
 
 ```javascript
 var i=0; i=i+1;return i
+
+if (true) {
+  
+};
 ```
 
 ##### Хорошо
@@ -260,6 +302,14 @@ var i=0; i=i+1;return i
 var i = 0;
 ++i;
 return i;
+
+function a() {
+  
+}
+
+var functionVariable = function() {
+  
+};
 ```
 
 
@@ -269,11 +319,17 @@ return i;
 * Открывающая скобка завершает строку и не переносится на новую;
 * Закрывающая скобка, напротив, переносится на следующую строку, кроме случаев с однострочными блоками;
 * Используйте блок даже для одиночного выражения;
-* Разделяйте блоки пустой строкой.
+* Разделяйте блоки пустой строкой. Если над функцией комментарий, то пустой
+ строки не должно быть.
 
 ##### Плохо
 
 ```javascript
+/**
+* Comment
+* @param {object} username 
+*/
+
 var superSu = function (username)
 {username.evilmode = true}
 
@@ -283,6 +339,10 @@ if (true) return false;
 ##### Хорошо
 
 ```javascript
+/**
+* Comment
+* @param {object} username 
+*/
 var superSu = function(userName) {
   userName.godMode = true;
 }
@@ -299,8 +359,14 @@ if (true) { return false; }
 
 Не заключайте в скобки возвращаемый объект и не переносите его на новую строку.
 
-> TODO: Добавить пример кода
+##### Плохо
 
+```
+return
+  a;
+
+return (a);
+```
 
 ### <a name="if"></a>if
 
@@ -374,7 +440,7 @@ function do(i, item) {
   ...
 }
 
-for(var i = 0, len = items.length; i < len; ++i) {
+for(var i = 0, len = items.length; i < len; i++) {
   do(i, item[i]);
 }
 
@@ -415,7 +481,7 @@ do {
 
 ### <a name="switch"></a>switch
 
-Завершайте каждый блок кроме `default` оператором `break`, `return` или `throw`.
+Завершайте каждый блок кроме `default` оператором `break` или `throw`.
 
 ```javascript
 switch (...) {
@@ -447,7 +513,8 @@ switch (...) {
 
 ## <a name="strings"></a>Строки
 
-Используйте одинарные кавычки, конкатенируйте длинные строки.
+* Используйте одинарные кавычки, конкатенируйте длинные строки;
+* Для новых стандартов используйте [шаблонные литералы](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/template_strings)
 
 ##### Плохо
 
@@ -469,12 +536,16 @@ var name = 'Vasya';
 var longStr = 'Note that in the 3d example, \'3d\' had to be quoted.' +
   'Possible to quote the JavaScript array indexes as well (e.g., ' +
   'years['2'] instead of years[2]), although it\'s not necessary. The 2';
+
+или
+
+var longStr = `Example ${varName}, something`;
 ```
 
 
 ## <a name="arrays"></a>Массивы
-
-Используйте методы: `push`, `map`, `forEach`, `filter`, `some`, `every`, `slice`.
+* При инициализации массива после последнего элемента допустима запятая;
+* Используйте методы: `push`, `map`, `forEach`, `filter`, `some`, `every`, `slice`.
 
 ##### Плохо
 
@@ -503,6 +574,8 @@ for (i = 0; i < a.length; i++) {
 ##### Хорошо
 
 ```javascript
+var a = [1,2,3,];
+
 a.push(12);
 
 a.forEach(function(i) {i += 1;});
@@ -519,13 +592,34 @@ myObj.length = Object.keys(myObj);
 var myArr = Array.prototype.slice.call(myObj);
 ```
 
+## <a name="objects"></a>Объекты
+
+* Используйте `this.foo = undefined` вместо `delete this.foo` (это быстрее работает);
+* Обращение к свойству осуществляется через `obj.propertyName`, а не `obj['propertyName']`,
+за исключением, когда имя свойство хранится в переменной `obj[variable]`.
+
+##### Плохо
+```javascript
+var x = {y: 123};
+
+delete x.y;
+// или
+x.y = null;
+// или
+x['y'] = undefined;
+```
+
+
+##### Хорошо
+```javascript
+x.y = undefined;
+```
 
 ## <a name="addons"></a>И ещё…
 
 * CoffeScript — нет.
 * jQuery — нет.
-* Bootstrap — нет. Используйте вместо него sega2.
-* Используйте `this.foo = null` вместо `delete this.foo` (это быстрее работает).
+* Bootstrap — нет. Используйте вместо него sega3.
 * Сеттеры и геттеры — пока нет, ждем внедрения ES6.
   ```javascript
   // плохо
@@ -535,6 +629,7 @@ var myArr = Array.prototype.slice.call(myObj);
   // хорошо
   var name = user.name();
   user.name('Vasya');
+
   ```
 * Object.defineProperty — да.
 
@@ -595,4 +690,4 @@ jscs /path/to/file.js --config /path/to/jscs.config --fix
 ---
 
 
-**Signaltech**, 2015
+**Signaltech**, 2019
